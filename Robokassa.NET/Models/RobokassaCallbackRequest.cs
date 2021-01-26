@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-
 namespace Robokassa.NET.Models
 {
     public class RobokassaCallbackRequest
