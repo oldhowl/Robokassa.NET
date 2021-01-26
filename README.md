@@ -13,7 +13,7 @@
 
 
 
-Полный пример использования можно найти в проекте Robokassa.NET.Example
+Полный пример использования можно найти в проекте [Robokassa.NET.Example](https://github.com/oldhowl/Robokassa.NET/tree/master/Robokassa.NET.Example)
 
 Алгоритм оплаты с фискализацией на примерах:
 - [собираем заказ](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L21) 
