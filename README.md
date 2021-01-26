@@ -10,7 +10,7 @@
 3. [Callback на результат оплаты (в демо проекте)](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L13)
 4. [Фискальные чеки](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/Models/RobokassaReceiptRequest.cs#L18)
 
-##Для начала работы тестового проекта необходимо
+## Для начала работы тестового проекта необходимо
 
 Заполнить appsettings.Development.json (название магазина в системе, пароль1, пароль2) из настроек вашего магазина https://partner.robokassa.ru/Shops
 
@@ -18,7 +18,7 @@
 (ендпоинт по умолчанию [/paymentResult](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L10)) с методом **POST**
 
 
-###Для временного домена для тестов можно воспользоваться сервисом ngrok
+### Для временного домена для тестов можно воспользоваться сервисом ngrok
 
 Установите [ngrok](https://ngrok.com/download)
 
