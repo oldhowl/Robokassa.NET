@@ -36,3 +36,10 @@
 
 
 ### После успешной оплаты робокасса отправит POST запрос на этот колбек.
+
+
+# Полный скрин настроек технического раздела магазина
+
+ShopName, Password1 и Password2 редактируются в [appsettings.Development.json](https://github.com/oldhowl/Robokassa.NET/blob/14290e3ddad2454d7648111ea3803f654b46c1e3/Robokassa.NET.Example/appsettings.Development.json#L2)
+
+![Полный скрин настроек](https://i.ibb.co/pLKK1DV/image.png)
