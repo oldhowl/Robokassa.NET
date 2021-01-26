@@ -4,14 +4,14 @@
 Пример использования в проекте Robokassa.NET.Example
 
 Алгоритм оплаты с фискализацией:
-- собираем заказ 
-- генерируем платежную ссылку
-- юзер переходит по ссылке
+- [собираем заказ](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L21) 
+- [генерируем платежную ссылку](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L40)
+- [юзер переходит по ссылке](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L44)
 - юзер оплачивает заказ
-- при успешной оплате юзера возвращает на success-page
-- параллельно робокасса отправляет запрос на сервер
-- сервер валидирует запрос
-- заказ 
+- [при успешной оплате юзера возвращает на success-page](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Controllers/ResultPaymentViewController.cs#L9)
+- [параллельно робокасса отправляет запрос на сервер](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L14)
+- [сервер валидирует запрос](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L20)
+- [проводим заказ в соответствии с остальной бизнес логикой приложения](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L21)
 
 
 Реализовано:
