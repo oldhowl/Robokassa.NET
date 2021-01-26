@@ -3,7 +3,7 @@
 
 ### Пример использования:
 
-1. В терминале: `dotnet add package Robokassa.NET --version 1.0.1`
+1. В терминале: `dotnet add package Robokassa.NET --version 1.1.0`
 2. Startup.cs: `services.AddRobokassa("shopName","password1","Password2",true);`
 3. Внедрить сервис IRobokassaService в управляющий код подготовки платежной ссылки
 4. Вызвать метод GenerateAuthLink интерфейса IRobokassaService для получения ссылки на оплату
@@ -26,7 +26,7 @@
 - [проводим заказ в соответствии с остальной бизнес логикой приложения](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L21)
 
 
-###Реализовано:
+### Реализовано:
 
 1. [Сбор ордера на оплату](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/IRobokassaService.cs#L7)
 2. [Возврат платежной ссылки](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/Models/PaymentUrl.cs#L3)
