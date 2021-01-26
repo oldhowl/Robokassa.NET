@@ -3,6 +3,17 @@
 
 Пример использования в проекте Robokassa.NET.Example
 
+Алгоритм оплаты с фискализацией:
+- собираем заказ 
+- генерируем платежную ссылку
+- юзер переходит по ссылке
+- юзер оплачивает заказ
+- при успешной оплате юзера возвращает на success-page
+- параллельно робокасса отправляет запрос на сервер
+- сервер валидирует запрос
+- заказ 
+
+
 Реализовано:
 
 1. [Сбор ордера на оплату](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/IRobokassaService.cs#L7)
@@ -42,4 +53,10 @@
 
 ShopName, Password1 и Password2 редактируются в [appsettings.Development.json](https://github.com/oldhowl/Robokassa.NET/blob/14290e3ddad2454d7648111ea3803f654b46c1e3/Robokassa.NET.Example/appsettings.Development.json#L2)
 
-![Полный скрин настроек](https://i.ibb.co/pLKK1DV/image.png)
+Алгоритм рачета хеша MD5
+
+ResultURL относится к контроллеру RobokassaTestController. Метод **POST**
+
+Success Url и Fail Url относятся к контроллеру ResultPaymentViewController
+
+![Полный скрин настроек](https://i.ibb.co/Jsw55dW/2021-01-26-17-39-43.png)
