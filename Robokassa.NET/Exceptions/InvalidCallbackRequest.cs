@@ -1,8 +1,8 @@
-namespace RMusicians.API.Services.Payment.Exceptions
+namespace Robokassa.NET.Exceptions
 {
     public class InvalidCallbackRequest : RobokassaBaseException
     {
-        public InvalidCallbackRequest(string callbackBody) : base($"Неверный запрос от робокассы, тело запроса: {callbackBody}")
+        public InvalidCallbackRequest(string callbackBody) : base($"Invalid Robokassa callback request: {callbackBody}")
         {
         }
     }

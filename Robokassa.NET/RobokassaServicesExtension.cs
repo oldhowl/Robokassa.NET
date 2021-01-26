@@ -2,7 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Robokassa.NET
 {
-    public static class RobokassaServices
+    public static class RobokassaServicesExtension
     {
         public static IServiceCollection AddRobokassa(this IServiceCollection services, string shopName,
             string password1, string password2, bool isTestEnv)

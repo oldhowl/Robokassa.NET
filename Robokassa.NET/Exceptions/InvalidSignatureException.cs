@@ -1,9 +1,9 @@
-namespace RMusicians.API.Services.Payment.Exceptions
+namespace Robokassa.NET.Exceptions
 {
     public class InvalidSignatureException : RobokassaBaseException
     {
         public InvalidSignatureException(string expectedSignature, string invalidSignature)
-            : base($"Ошибка проверки подписи. Ожидаемая сигнатура: {expectedSignature}, пришла: {invalidSignature}")
+            : base($"Signature validation error. expected: {expectedSignature}, but was: {invalidSignature}")
         {
         }
     }

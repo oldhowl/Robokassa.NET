@@ -1,12 +1,12 @@
-namespace RMusicians.API.Services.Payment.Models
+namespace Robokassa.NET.Models
 {
     public class PaymentUrl
     {
+        public string Link { get; }
+
         public PaymentUrl(string link)
         {
             Link = link;
         }
-
-        public string Link { get;  }
     }
 }

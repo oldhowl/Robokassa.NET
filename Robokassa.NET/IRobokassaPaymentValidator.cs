@@ -1,7 +1,7 @@
-namespace RMusicians.API.Services.Payment
+namespace Robokassa.NET
 {
     public interface IRobokassaPaymentValidator
     {
-        void CheckResult(string sumString,decimal outSum, int invId, string signatureValue, string paymentMethod, string eMail);
+        void CheckResult(string sumString, int invId, string signatureValue);
     }
 }

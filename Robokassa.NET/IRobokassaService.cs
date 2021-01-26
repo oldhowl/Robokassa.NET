@@ -1,9 +1,9 @@
-using RMusicians.API.Services.Payment.Models;
+using Robokassa.NET.Models;
 
-namespace RMusicians.API.Services.Payment
+namespace Robokassa.NET
 {
     public interface IRobokassaService
     {
-        PaymentUrl GenerateAuthLink(decimal totalAmount, object invoiceId, RobokassaReceiptRequest receipt);
+        PaymentUrl GenerateAuthLink(decimal totalAmount, int invoiceId, RobokassaReceiptRequest receipt = null);
     }
 }

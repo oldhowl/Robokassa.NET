@@ -1,24 +1,20 @@
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using RMusicians.API.Application.Options;
-using RMusicians.API.Services.Payment.Models;
+using Robokassa.NET.Models;
 
-namespace RMusicians.API.Services.Payment
+namespace Robokassa.NET
 {
     public class RobokassaService : IRobokassaService
     {
         private readonly RobokassaOptions _options;
         private readonly bool _isTestEnv;
 
-        public RobokassaService(IOptions<RobokassaOptions> options, IWebHostEnvironment webHostEnvironment)
-            : this(options.Value, !webHostEnvironment.IsProduction())
-        {
-        }
+       
 
         public RobokassaService(RobokassaOptions options, bool isTestEnv)
         {
@@ -29,8 +25,8 @@ namespace RMusicians.API.Services.Payment
 
         public PaymentUrl GenerateAuthLink(
             decimal totalAmount,
-            object invoiceId,
-            RobokassaReceiptRequest receipt = null)
+            int invoiceId,
+            RobokassaReceiptRequest receipt)
         {
             var receiptEncodedJson =
                 receipt != null ? HttpUtility.UrlEncode(JsonConvert.SerializeObject(receipt)) : null;
@@ -48,9 +44,9 @@ namespace RMusicians.API.Services.Payment
 
         private string BuildPaymentLink(string invoiceId, string amount, string signature, string receiptEncodedJson)
         {
-            var host = "https://auth.robokassa.ru/Merchant/Index.aspx?";
+            const string host = "https://auth.robokassa.ru/Merchant/Index.aspx?";
 
-            var parameters = new List<string>();
+            var parameters = new Collection<string>();
 
             if (_isTestEnv)
                 parameters.Add("isTest=1");

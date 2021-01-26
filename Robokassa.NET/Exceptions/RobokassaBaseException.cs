@@ -1,10 +1,10 @@
 using System;
 
-namespace RMusicians.API.Services.Payment.Exceptions
+namespace Robokassa.NET.Exceptions
 {
-    public class RobokassaBaseException : Exception
+    public abstract class RobokassaBaseException : Exception
     {
-        public RobokassaBaseException(string? message) : base(message)
+        protected RobokassaBaseException(string message) : base(message)
         {
         }
     }

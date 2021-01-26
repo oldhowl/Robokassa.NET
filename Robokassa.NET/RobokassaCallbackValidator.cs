@@ -1,28 +1,23 @@
-using System.Globalization;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using RMusicians.API.Application.Options;
-using RMusicians.API.Services.Payment.Exceptions;
+using Robokassa.NET.Exceptions;
 
-namespace RMusicians.API.Services.Payment
+namespace Robokassa.NET
 {
     public class RobokassaCallbackValidator : IRobokassaPaymentValidator
     {
         private readonly string _secondPassword;
 
-        public RobokassaCallbackValidator(IOptions<RobokassaOptions> options)
-        {
-            _secondPassword = options.Value.Password2;
-        }
 
-        public void CheckResult(string sumString,decimal outSum, int invId, string signatureValue, string paymentMethod, string eMail)
+        public RobokassaCallbackValidator(string password2) => _secondPassword = password2;
+
+        public void CheckResult(string sumString, int invId, string signatureValue)
         {
             if (invId == 0)
                 throw new InvalidCallbackRequest(JsonConvert.SerializeObject(new
                 {
-                    invId, outSum, signatureValue, paymentMethod, eMail
-                }, Formatting.Indented));
-
+                    sumString, invId, signatureValue
+                }));
             string
                 outSummStr = sumString,
                 outInvIdStr = invId.ToString(),

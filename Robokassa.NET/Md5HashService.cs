@@ -1,9 +1,9 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace RMusicians.API.Services.Payment
+namespace Robokassa.NET
 {
-    internal class Md5HashService
+    internal static class Md5HashService
     {
         public static string GenerateMd5Hash(string stringToHash)
         {
