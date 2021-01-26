@@ -1,4 +1,3 @@
-using System;
 using Microsoft.AspNetCore.Mvc;
 using Robokassa.NET.Exceptions;
 using Robokassa.NET.Models;
@@ -22,7 +21,7 @@ namespace Robokassa.NET.Example.Controllers
                 //_paymentProcessor.OnSuccess(request.InvId, request.OutSumDec, request.EMail);
                 return Content($"OK{request.InvId}");
             }
-            catch (RobokassaBaseException e)
+            catch (RobokassaBaseException)
             {
                 //_log.Error(e.Message);
                 //_paymentProcessor.OnFail(request.InvId, request.OutSumDec, request.EMail);

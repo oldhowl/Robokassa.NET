@@ -7,17 +7,18 @@ namespace Robokassa.NET.Models
 {
     public class ReceiptOrderItem
     {
-        [JsonProperty("name")] public string Name { get; set; }
+        [JsonProperty("name")] public string Name { get; }
 
-        [JsonProperty("quantity")] public int Quantity { get; set; }
+        [JsonProperty("quantity")] public int Quantity { get; }
 
-        [JsonProperty("sum")] public decimal Sum { get; set; }
+        [JsonProperty("sum")] public decimal Sum { get; }
+        [JsonProperty("nomenclatureCode")] public string NomenclatureCode { get; }
 
-        [JsonProperty("payment_method")] public string PaymentMethod { get; set; }
+        [JsonProperty("payment_method")] public string PaymentMethod { get; }
 
-        [JsonProperty("payment_object")] public string PaymentObject { get; set; }
+        [JsonProperty("payment_object")] public string PaymentObject { get; }
 
-        [JsonProperty("tax")] public string Tax { get; set; }
+        [JsonProperty("tax")] public string Tax { get; }
 
 
         /// <summary>
@@ -41,6 +42,7 @@ namespace Robokassa.NET.Models
         {
             Quantity = quantity;
             Sum = sum;
+            NomenclatureCode = nomenclatureCode;
             Name = name ?? throw new ArgumentNullException(nameof(name));
             PaymentMethod = paymentMethod?.ToSnakeCaseName();
             PaymentObject = paymentObject?.ToSnakeCaseName();

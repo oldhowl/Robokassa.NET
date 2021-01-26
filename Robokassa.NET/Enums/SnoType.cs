@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Robokassa.NET.Enums
 {
     public enum SnoType

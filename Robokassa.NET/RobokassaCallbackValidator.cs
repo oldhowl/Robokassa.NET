@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Robokassa.NET.Exceptions;
 
@@ -23,10 +22,10 @@ namespace Robokassa.NET
                 outInvIdStr = invId.ToString(),
                 srcBase = $"{outSummStr}:{outInvIdStr}:{_secondPassword}";
 
-            var srcMD5Hash = Md5HashService.GenerateMd5Hash(srcBase);
+            var srcMd5Hash = Md5HashService.GenerateMd5Hash(srcBase);
 
-            if (!signatureValue.ToLower().Equals(srcMD5Hash))
-                throw new InvalidSignatureException(signatureValue, srcMD5Hash);
+            if (!signatureValue.ToLower().Equals(srcMd5Hash))
+                throw new InvalidSignatureException(signatureValue, srcMd5Hash);
         }
     }
 }
