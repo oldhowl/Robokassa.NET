@@ -26,10 +26,10 @@ namespace Robokassa.NET.Example
             
             //Заполните appsettings.Development.Json
             services.AddRobokassa(
-                Configuration["RobokassaOptions:ShopName"],
-                Configuration["RobokassaOptions:Password1"],
-                Configuration["RobokassaOptions:Password2"],
-                !_env.IsProduction());
+                            Configuration["RobokassaOptions:ShopName"],
+                            Configuration["RobokassaOptions:Password1"],
+                            Configuration["RobokassaOptions:Password2"],
+                            !_env.IsProduction());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

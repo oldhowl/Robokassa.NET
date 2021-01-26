@@ -1,9 +1,21 @@
 # Robokassa.NET
 Реализация платежей робокассы с робочеками (фискализацией) на платформе .NET Core 3.1
 
-Пример использования в проекте Robokassa.NET.Example
+### Пример использования:
 
-Алгоритм оплаты с фискализацией:
+1. В терминале: `dotnet add package Robokassa.NET --version 1.0.1`
+2. Startup.cs: `services.AddRobokassa("shopName","password1","Password2",true);`
+3. Внедрить сервис IRobokassaService в управляющий код подготовки платежной ссылки
+4. Вызвать метод GenerateAuthLink интерфейса IRobokassaService для получения ссылки на оплату
+5. Реализовать контроллер для получения ответа от робокассы
+6. Валидировать ответ с помощью IRobokassaPaymentValidator и метода CheckResult
+7. Обработать платеж согласно бизнес логике приложения
+
+
+
+Полный пример использования можно найти в проекте Robokassa.NET.Example
+
+Алгоритм оплаты с фискализацией на примерах:
 - [собираем заказ](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L21) 
 - [генерируем платежную ссылку](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L40)
 - [юзер переходит по ссылке](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Program.cs#L44)
@@ -14,12 +26,16 @@
 - [проводим заказ в соответствии с остальной бизнес логикой приложения](https://github.com/oldhowl/Robokassa.NET/blob/26ec285c5a84c0e784395f37c5e35286b24b12e3/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L21)
 
 
-Реализовано:
+###Реализовано:
 
 1. [Сбор ордера на оплату](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/IRobokassaService.cs#L7)
 2. [Возврат платежной ссылки](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/Models/PaymentUrl.cs#L3)
 3. [Callback на результат оплаты (в демо проекте)](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET.Example/Controllers/RobokassaTestController.cs#L13)
 4. [Фискальные чеки](https://github.com/oldhowl/Robokassa.NET/blob/57d98c8a4c8e94f29841bb5fb607206d3e06c0c4/Robokassa.NET/Models/RobokassaReceiptRequest.cs#L18)
+5. Кастомные `Shp_` поля
+
+#### В планах реализации:
+- кастомные поля `Shp_` массивом 
 
 ## Для начала работы тестового проекта необходимо
 

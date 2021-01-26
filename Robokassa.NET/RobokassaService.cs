@@ -12,7 +12,6 @@ namespace Robokassa.NET
         private readonly RobokassaOptions _options;
         private readonly bool _isTestEnv;
 
-       
 
         public RobokassaService(RobokassaOptions options, bool isTestEnv)
         {
@@ -24,23 +23,28 @@ namespace Robokassa.NET
         public PaymentUrl GenerateAuthLink(
             decimal totalAmount,
             int invoiceId,
-            RobokassaReceiptRequest receipt)
+            RobokassaReceiptRequest receipt,
+            CustomShpParameters customShpParameters)
         {
-            var receiptEncodedJson =
-                receipt != null ? HttpUtility.UrlEncode(JsonConvert.SerializeObject(receipt)) : null;
+            var receiptEncodedJson = receipt?.ToString();
+
+            var customFieldsLine = customShpParameters?.ToString();
 
             var amountStr = totalAmount.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
-            var invoiceIdStr = invoiceId.ToString();
             
+            var invoiceIdStr = invoiceId.ToString();
+
             var signatureValue =
                 Md5HashService
                     .GenerateMd5Hash(
-                        PrepareMd5SumString(amountStr, invoiceIdStr, receiptEncodedJson));
+                        PrepareMd5SumString(amountStr, invoiceIdStr, receiptEncodedJson, customFieldsLine));
 
-            return new PaymentUrl(BuildPaymentLink(invoiceIdStr, amountStr, signatureValue, receiptEncodedJson));
+            return new PaymentUrl(BuildPaymentLink(invoiceIdStr, amountStr, signatureValue, receiptEncodedJson,
+                customShpParameters));
         }
 
-        private string BuildPaymentLink(string invoiceId, string amount, string signature, string receiptEncodedJson)
+        private string BuildPaymentLink(string invoiceId, string amount, string signature, string receiptEncodedJson,
+            CustomShpParameters customShpParameters)
         {
             const string host = "https://auth.robokassa.ru/Merchant/Index.aspx?";
 
@@ -56,22 +60,32 @@ namespace Robokassa.NET
             if (!string.IsNullOrEmpty(receiptEncodedJson))
                 parameters.Add("Receipt=" + HttpUtility.UrlEncode(receiptEncodedJson));
 
+            customShpParameters?
+                .GetParameters?
+                .ForEach(parameter =>
+                    parameters.Add($"{parameter.Key}={HttpUtility.UrlEncode(HttpUtility.UrlEncode(parameter.Value))}"));
+
             parameters.Add("SignatureValue=" + signature);
             parameters.Add("Culture=ru");
 
-            return host + string.Join("&", parameters);
+            var url = host + string.Join("&", parameters);
+            return url;
         }
 
-        private string PrepareMd5SumString(string amount, string invoiceId, string receiptEncodedJson)
+        private string PrepareMd5SumString(string amount, string invoiceId, string receiptEncodedJson,
+            string customParameters)
         {
-            return string.Join(":", new List<string>
+            var str = string.Join(":", new List<string>
             {
                 _options.ShopName,
                 amount,
                 invoiceId,
                 receiptEncodedJson,
-                _options.Password1
+                _options.Password1,
+                customParameters
             }.Where(x => x != null));
+
+            return str;
         }
     }
 }

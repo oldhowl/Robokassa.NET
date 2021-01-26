@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using Newtonsoft.Json;
 using Robokassa.NET.Enums;
 using Robokassa.NET.Extensions;
@@ -19,6 +20,11 @@ namespace Robokassa.NET.Models
         {
             Sno = snoType.ToSnakeCaseName();
             Items = items;
+        }
+
+        public override string ToString()
+        {
+            return HttpUtility.UrlEncode(JsonConvert.SerializeObject(this));
         }
     }
 }

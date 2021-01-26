@@ -27,6 +27,17 @@ namespace Robokassa.NET.Example
                 }
             );
 
+            //Опциональные пользовательские параметры shp_ https://docs.robokassa.ru/#1205
+            var customFields = new CustomShpParameters();
+
+            //Можно указать поля с префиксом Shp_
+            customFields.Add("Shp_login", "Vasya");
+            
+            //Можно без него, метод Add поправит ключ
+            customFields.Add("oplata", "1");
+            customFields.Add("email", "test@example.com");
+            customFields.Add("name", "Вася");
+
 
             using (var scope = host.Services.CreateScope())
             {
@@ -38,7 +49,7 @@ namespace Robokassa.NET.Example
 
                     //Основной сценарий получения платежной ссылки
                     var paymentUrl = robokassaService
-                        .GenerateAuthLink(receipt.TotalPrice, 123, receipt);
+                        .GenerateAuthLink(receipt.TotalPrice, 123, receipt, customFields);
 
                     //Запускаем браузер сразу со ссылкой оплаты если ваша ОС в списке
                     if (new[]
