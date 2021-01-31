@@ -6,7 +6,7 @@
         <Authors>oldhowl</Authors>
         <Description>Robokassa payment implementation (with Robocheki)</Description>
         <PackageProjectUrl>https://github.com/oldhowl/Robokassa.NET</PackageProjectUrl>
-        <PackageVersion>1.1.1</PackageVersion>
+        <PackageVersion>1.1.2</PackageVersion>
         <PackageIcon>icon.png</PackageIcon>
         <PackageIconUrl>images\icon.png</PackageIconUrl>
     </PropertyGroup>
