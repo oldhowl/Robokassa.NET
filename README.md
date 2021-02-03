@@ -1,7 +1,12 @@
 # Robokassa.NET
-[![NuGet Badge](https://buildstats.info/nuget/Robokassa.NET)](https://www.nuget.org/packages/Robokassa.NET/)
 
 #### Реализация платежей Robokassa с робочеками (фискализацией) на платформе .NET 
+
+
+
+[![NuGet Badge](https://buildstats.info/nuget/Robokassa.NET)](https://www.nuget.org/packages/Robokassa.NET/)
+
+
 
 
 ### Пример использования:
